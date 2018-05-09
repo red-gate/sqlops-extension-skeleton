@@ -24,7 +24,7 @@ class App extends Component {
           return response.json()
         }
         const error = new Error(response.statusText)
-        throw { error, response }
+        throw error
       })
       .then(json => {
         this.setState({ extensionVersion: json.version })
@@ -41,7 +41,7 @@ class App extends Component {
           return response.json()
         }
         const error = new Error(response.statusText)
-        throw { error, response }
+        throw error
       })
       .then(json => {
         this.setState({ backendVersion: json.version })
@@ -58,7 +58,7 @@ class App extends Component {
           return response.json()
         }
         const error = new Error(response.statusText)
-        throw { error, response }
+        throw error
       })
       .then(json => {
         this.setState({ connections: json.connections })
