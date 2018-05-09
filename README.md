@@ -20,3 +20,29 @@ A SQL Operations Studio extension skeleton based on SQL Search extension
 The extension exposes its functionality through commands. Open the command palette (`Ctrl`/`Cmd` + `Shift` + `p`) and type "MyExtension" to get started.
 
 ![demo sql ops extension skeleton](./images/sql-ops-extension-skeleton.gif)
+
+## Build
+
+### Build and debug extension
+
+* open `vscode` at the root directory
+* hit `F5`
+
+### Build and run backend in standalone
+
+```bash
+➜ cd backend
+➜ dotnet build
+➜ dotnet src/Backend.Console/bin/Debug/netcoreapp2.0/Backend.Console.dll version
+{"version": "0.2.0"}
+```
+
+### Build and run frontend in standalone
+
+```bash
+➜ cd frontend
+➜ yarn
+➜ yarn start
+```
+
+**Note**: As the frontend needs the extension for API and query parameters it won't completely work standalone.
