@@ -92,10 +92,10 @@ class App extends Component {
         <div className='App-container'>
           <p>extension version: <code>{this.state.extensionVersion}</code></p>
           <p>backend version: <code>{this.state.backendVersion}</code></p>
-          <p>active connections:
+          <div>active connections:
           <ul>{this.state.connections.map((c, i) => <li key={'c-' + i}>{c.connectionId} | {c.label}</li>)}
             </ul>
-          </p>
+          </div>
         </div>
       </div>
     </div>
