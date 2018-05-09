@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   fetchVersion() {
-    fetch('/api/extension/version')
+    fetch('/api/versions/extension')
       .then(response => {
         if (response.ok) {
           return response.json()
@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   fetchBackendVersion() {
-    fetch('/api/backend/version')
+    fetch('/api/versions/backend')
       .then(response => {
         if (response.ok) {
           return response.json()

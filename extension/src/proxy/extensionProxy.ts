@@ -17,8 +17,8 @@ export class ExtensionProxy {
     }
 
     start(): BaseUri {
-        this.webServer.addGetHandler('/api/extension/version', (request, response) => this.getExtensionVersion(request, response));
-        this.webServer.addGetHandler('/api/backend/version', (request, response) => this.getBackendVersion(request, response));
+        this.webServer.addGetHandler('/api/versions/extension', (request, response) => this.getExtensionVersion(request, response));
+        this.webServer.addGetHandler('/api/versions/backend', (request, response) => this.getBackendVersion(request, response));
         this.webServer.addGetHandler('/api/connections', (request, response) => this.getConnections(request, response));
         this.webServer.start();
         return this.webServer.baseUri;
