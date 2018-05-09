@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "SqlOps Extension",
+            "type": "sqlopsExtensionHost",
+            "request": "launch",
+            "runtimeExecutable": "sqlops",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceRoot}/extension"
+            ],
+            "stopOnEntry": false,
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/extension/out/**/*.js"
+            ],
+            "preLaunchTask": "",
+            "timeout": 250000
+        }
+    ]
+}

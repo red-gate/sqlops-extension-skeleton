@@ -1,0 +1,50 @@
+{
+    "name": "sqlops-extension-skeleton",
+    "displayName": "SQL Operations Studio extension skeleton",
+    "description": "An extension skeleton for SQL Operations Studio",
+    "version": "0.1.0",
+    "publisher": "Redgate",
+    "icon": "images/gatebase.png",
+    "private": true,
+    "engines": {
+        "vscode": "^1.18.0",
+        "sqlops": "*"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:myextension.sendMessage"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "myextension.sendMessage",
+                "title": "Send A Message To Extension",
+                "category": "MyExtension"
+            }
+        ]
+    },
+    "scripts": {
+        "prepare": "node ./node_modules/sqlops/bin/install",
+        "build": "tsc -p ./",
+        "package": "vsce package",
+        "postpackage": "mv *.vsix ../artifacts/",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "@types/node": "^7.0.43",
+        "cash-mv": "^0.2.0",
+        "typescript": "^2.6.1",
+        "vsce": "^1.35.0",
+        "vscode": "^1.1.6"
+    },
+    "dependencies": {
+        "body-parser": "^1.18.2",
+        "express": "^4.16.2",
+        "sqlops": "github:anthonydresser/sqlops-extension-sqlops"
+    }
+}
