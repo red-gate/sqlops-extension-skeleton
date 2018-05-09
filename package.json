@@ -1,0 +1,24 @@
+{
+  "name": "sqlops-extension-skeleton",
+  "version": "0.1.0",
+  "private": true,
+  "publisher": "Redgate",
+  "engines": {
+    "vscode": "^1.18.0",
+    "sqlops": "*"
+  },
+  "scripts": {
+    "prepare": "npm run build",
+    "build:extension": "cd extension && npm run build && cd ..",
+    "build:frontend": "cd frontend && npm run build && cd ..",
+    "build:backend": "dotnet build ./backend/src/Backend.Console/ --output \"../../../extension/out/backend\"",
+    "build": "npm run build:extension && npm run build:frontend && npm run build:backend",
+    "publish:backend": "dotnet publish ./backend/src/Backend.Console/ --output \"../../../extension/out/backend\"",
+    "publish": "npm run build:extension && npm run build:frontend && npm run publish:backend",
+    "install:extension": "cd extension && npm install && cd ..",
+    "install:frontend": "cd frontend && npm install && cd ..",
+    "postinstall": "npm run install:extension && npm run install:frontend",
+    "prepackage": "npm run publish",
+    "package": "cd extension && npm run package && cd .."
+  }
+}

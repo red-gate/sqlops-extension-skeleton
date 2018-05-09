@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+  <title>SQL Operations Studio extension</title>
+  <style title="theme"></style>
+  <script type="text/javascript">
+    var decode = function (s) {
+      return decodeURIComponent(s.replace(/\+/g, " "));
+    };
+    var getStyleSheet = function (uniqueTitle) {
+      for (var i = 0; i < document.styleSheets.length; i++) {
+        var sheet = document.styleSheets[i];
+        if (sheet.title == uniqueTitle) {
+          return sheet;
+        }
+      }
+    };
+    var getQueryParams = function () {
+      var match;
+      var search = /([^&=]+)=?([^&]*)/g;
+      var query = window.location.search.substring(1);
+      var queryParams = {};
+
+      while (match = search.exec(query)) {
+        queryParams[decode(match[1])] = decode(match[2]);
+      }
+
+      return queryParams;
+    };
+
+    var queryParams = getQueryParams();
+    var fontFamily = queryParams["fontFamily"];
+    var fontSize = queryParams["fontSize"];
+    var backgroundColor = queryParams["backgroundColor"];
+    var color = queryParams["color"];
+
+    var stylesheet = getStyleSheet("theme");
+    stylesheet.insertRule("html > body {" +
+      "font-family: " + fontFamily + ";" +
+      "font-size: " + fontSize + ";" +
+      "background-color: " + backgroundColor + ";" +
+      "color: " + color + ";" +
+      "}", 0);
+  </script>
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+</body>
+
+</html>
