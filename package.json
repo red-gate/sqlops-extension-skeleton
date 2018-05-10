@@ -4,7 +4,7 @@
   "private": true,
   "publisher": "Redgate",
   "engines": {
-    "vscode": "^1.18.0",
+    "vscode": "^1.19.0",
     "sqlops": "*"
   },
   "scripts": {
