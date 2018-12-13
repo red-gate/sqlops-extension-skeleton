@@ -39,7 +39,7 @@
         "@types/node": "^7.0.43",
         "cash-mv": "^0.2.0",
         "typescript": "^2.6.1",
-        "vsce": "^1.35.0",
+        "vsce": "^1.36.0",
         "vscode": "^1.1.17"
     },
     "dependencies": {
