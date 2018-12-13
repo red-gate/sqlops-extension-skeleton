@@ -5,7 +5,7 @@
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.1.1",
+    "react-scripts": "^2.1.1",
     "urijs": "^1.19.1"
   },
   "scripts": {
@@ -18,5 +18,11 @@
   "devDependencies": {
     "cash-mv": "^0.2.0",
     "cash-rm": "^0.2.0"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
