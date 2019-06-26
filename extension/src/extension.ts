@@ -11,17 +11,18 @@ import ExtensionContext from './ExtensionContext';
 export function activate(context: vscode.ExtensionContext) {
     const extensionContext = new ExtensionContext(context);
     const extensionProxy = new ExtensionProxy(extensionContext);
+    const extensionContentProvider = new ExtensionContentProvider(extensionProxy);
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('myextension.sendMessage', () => sendMessage()),
-        vscode.workspace.registerTextDocumentContentProvider(scheme, new ExtensionContentProvider(extensionProxy))
+        vscode.commands.registerCommand('myextension.sendMessage', () => sendMessage(extensionContentProvider)),
+        vscode.workspace.registerTextDocumentContentProvider(scheme, extensionContentProvider)
     );
 }
 
 export function deactivate() {
 }
 
-async function sendMessage(): Promise<{}> | undefined {
+async function sendMessage(extensionContentProvider: vscode.TextDocumentContentProvider): Promise<{}> | undefined {
     let message = await promptForMessage();
 
     if (!message) {
@@ -29,7 +30,9 @@ async function sendMessage(): Promise<{}> | undefined {
     }
 
     let uri = createUri('myextension', { message });
-    return vscode.commands.executeCommand('vscode.previewHtml', uri, vscode.ViewColumn.One, `Show message: ${message}`);
+    const panel = vscode.window.createWebviewPanel('extension.helloPanel', `Show message: ${message}`, vscode.ViewColumn.One);
+    panel.webview.html = await extensionContentProvider.provideTextDocumentContent(uri, null);
+    return
 }
 
 async function promptForMessage(): Promise<string | undefined> {
